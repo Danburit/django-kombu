@@ -19,7 +19,8 @@ class Message(models.Model):
     sent_at = models.DateTimeField(null=True, blank=True, db_index=True,
                 auto_now_add=True)
     payload = models.TextField(_("payload"), null=False)
-    queue = models.ForeignKey(Queue, related_name="messages")
+    queue = models.ForeignKey(Queue, related_name="messages", 
+                on_delete=models.deletion.CASCADE)
 
     objects = MessageManager()
 
